@@ -805,136 +805,177 @@
   0% { transform: scale(1); opacity: 1; }
   100% { transform: scale(0); opacity: 0; }
 }
-}
 
-/* ===== EXTENDED MOBILE LAYOUT (Now for tablets too!) ===== */
-@media (max-width: 1024px) {  /* Changed from 768px to 1024px */
-  /* 1. Clean Base */
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+/* =========================================== */
+/* MOBILE FIX - FULL WIDTH LAYOUT              */
+/* =========================================== */
+
+/* TABLETS & LARGE PHONES (768px - 1024px) */
+@media (max-width: 1024px) {
+  /* Fix hero section - stack vertically */
+  .hero {
+    grid-template-columns: 1fr !important;
+    padding: 40px 5% 60px 5% !important;
+    gap: 30px !important;
   }
   
-  /* 2. Better Header */
+  /* Make cards 2 columns on tablets */
+  .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+  
+  /* Fix footer for tablets */
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+    margin-left: 0 !important;
+    padding: 0 5% !important;
+  }
+  
+  /* Make text readable */
+  .hero h2 {
+    font-size: 28px !important;
+    line-height: 1.3;
+  }
+  
+  .lead {
+    font-size: 16px !important;
+  }
+}
+
+/* MOBILE PHONES (≤768px) */
+@media (max-width: 768px) {
+  /* 1. FIX BASE LAYOUT - MOST IMPORTANT! */
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  
+  .wrap, main, section {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* 2. FIX HEADER - Stack vertically */
   header {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 5% 15px 5% !important;
-    background: linear-gradient(180deg, rgba(5,41,74,0.95), rgba(5,41,74,0.85));
-    backdrop-filter: blur(10px);
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 25px 5% 20px 5% !important;
   }
   
   .brand {
     flex-direction: column;
-    text-align: center;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 20px;
   }
   
-  /* 3. Make Title Fit in 2 Lines */
   h1 {
-    font-size: 32px !important;
-    line-height: 1.2;
-    text-align: center;
-    max-width: 90%;
-    margin: 0 auto;
+    font-size: 26px !important;
   }
   
-  /* 4. Hero Title - Make Sure It's Visible */
-  .hero h2 {
-    font-size: 28px !important;
-    line-height: 1.3;
-    margin-bottom: 20px;
-    background: linear-gradient(90deg, #ffd166, #ffb347);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    word-wrap: break-word;
-    hyphens: auto;
-    max-width: 100%;
-  }
-  
-  /* 5. Hero Section - Better for Tablets */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    padding: 40px 5% !important;
-    gap: 40px;
-  }
-  
-  .hero-card {
-    padding: 30px !important;
-    border-radius: 24px;
-  }
-  
-  /* 6. Make Text Readable */
-  .lead {
-    font-size: 18px !important;
-    line-height: 1.7;
-    margin-bottom: 30px;
-    color: rgba(230, 247, 255, 0.95);
-  }
-  
-  /* 7. Navigation - More Spacious */
+  /* 3. FIX NAVIGATION - Grid layout */
   nav {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    width: 100%;
-    padding: 15px 0;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    justify-content: center !important;
   }
   
   nav a {
-    padding: 14px 10px;
-    font-size: 16px;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
+    text-align: center;
+    padding: 10px 5px !important;
+    font-size: 13px !important;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
   }
   
-  /* 8. Features Grid - 2 Columns on Tablets, 1 on Phones */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 40px;
+  /* 4. FIX HERO - Full width, no sidebar */
+  .hero {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 30px 5% 50px 5% !important;
+    gap: 30px !important;
   }
   
-  /* 9. Make Everything Bigger & Clearer */
-  .card {
+  .hero-card {
+    width: 100% !important;
     padding: 25px !important;
-    border-radius: 20px;
-    min-height: 180px;
+    margin: 0 !important;
   }
   
-  .card h3 {
-    font-size: 20px;
-    margin-bottom: 12px;
+  .hero h2 {
+    font-size: 24px !important;
+    text-align: center;
+    line-height: 1.3;
+    word-wrap: break-word;
   }
   
-  .card p {
-    font-size: 15px;
+  .lead {
+    font-size: 15px !important;
+    text-align: justify;
     line-height: 1.6;
   }
   
-  /* 10. Big CTA Button */
+  /* 5. FIX CTA BUTTON - Full width */
   .cta {
-    width: 100%;
-    padding: 20px 30px !important;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 15px 20px !important;
+    font-size: 16px !important;
+    margin: 20px 0 30px 0 !important;
+  }
+  
+  /* 6. FIX FEATURES GRID - Single column */
+  .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  
+  .card {
+    width: 100% !important;
+    padding: 20px !important;
+  }
+  
+  .card h3 {
     font-size: 18px !important;
-    min-height: 60px;
-    margin: 30px 0 40px 0;
-    border-radius: 16px;
   }
   
-  /* 11. Footer - Better on Tablets */
+  .card p {
+    font-size: 14px !important;
+  }
+  
+  /* 7. FIX SIDEBAR - Full width */
+  .info {
+    width: 100% !important;
+    padding: 20px !important;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+  }
+  
+  .pill {
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* 8. FIX FOOTER - Single column */
   .footer-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    padding: 40px 5%;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px !important;
+    padding: 0 5% !important;
   }
   
-  /* 12. Hide Desktop Elements */
+  .footer-column {
+    width: 100% !important;
+  }
+  
+  /* 9. HIDE DISTRACTIONS */
   .cursor {
     display: none !important;
   }
@@ -942,95 +983,80 @@
   body {
     cursor: default !important;
   }
+  
+  .bubble {
+    opacity: 0.1 !important;
+  }
+  
+  /* 10. TOUCH FRIENDLY */
+  button, .cta, nav a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-/* ===== SMALLER PHONES (≤768px) ===== */
-@media (max-width: 768px) {
-  /* Override for smaller phones */
-  .grid {
-    grid-template-columns: 1fr !important; /* Single column on phones */
-  }
-  
-  .footer-content {
-    grid-template-columns: 1fr !important;
-  }
-  
+/* SMALL PHONES (≤480px) */
+@media (max-width: 480px) {
   h1 {
-    font-size: 28px !important;
+    font-size: 22px !important;
   }
   
   .hero h2 {
-    font-size: 24px !important;
+    font-size: 20px !important;
   }
   
   nav {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ===== VERY SMALL PHONES (≤480px) ===== */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 24px !important;
-  }
-  
-  .hero h2 {
-    font-size: 22px !important;
-    line-height: 1.4;
-  }
-  
-  .lead {
-    font-size: 16px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
   }
   
   nav a {
-    padding: 12px 8px;
-    font-size: 14px;
+    font-size: 12px !important;
+    padding: 8px 4px !important;
   }
   
   .cta {
-    padding: 18px 24px !important;
-    font-size: 16px !important;
-  }
-}
-
-/* ===== ENSURE TITLE IS VISIBLE ===== */
-/* Force title to be visible and properly sized */
-.hero h2 {
-  overflow-wrap: break-word;
-  word-break: keep-all;
-  hyphens: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limit to 2 lines */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* ===== SPECIFIC TITLE FIX ===== */
-/* Make sure "Har Inch Ka Perfect Hisab" is visible */
-@media (max-width: 1024px) {
-  .hero h2 {
-    font-size: 2.2rem !important;
-    line-height: 1.3;
-    text-align: center;
-    padding: 0 10px;
+    padding: 14px 18px !important;
+    font-size: 15px !important;
   }
   
-  /* If title is still too long, reduce size slightly */
-  @media (max-width: 768px) {
-    .hero h2 {
-      font-size: 1.9rem !important;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero h2 {
-      font-size: 1.7rem !important;
-      line-height: 1.4;
-    }
+  .card {
+    padding: 18px !important;
   }
 }
 
+/* =========================================== */
+/* EXTRA FIXES FOR COMMON ISSUES               */
+/* =========================================== */
+
+/* Prevent text size adjustment on iOS */
+* {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Fix for iOS Safari backdrop-filter */
+@supports (-webkit-touch-callout: none) {
+  .hero-card, .card {
+    -webkit-backdrop-filter: blur(6px);
+  }
+}
+
+/* Ensure images don't overflow */
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix for sticky headers on iOS */
+@supports (-webkit-touch-callout: none) {
+  header {
+    position: -webkit-sticky;
+  }
+}
   </style>
 </head>
 <body>
