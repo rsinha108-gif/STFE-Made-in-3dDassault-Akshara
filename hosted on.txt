@@ -1,0 +1,4 @@
+https://rsinha108-gif.github.io/dassault-ak/
+
+
+https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://rsinha108-gif.github.io/dassault-ak/
